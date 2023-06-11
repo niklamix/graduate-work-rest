@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create-users-table" author="admin">
+        <createTable tableName="users">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="user_id_pk" />
+            </column>
+            <column name="name" type="varchar(250)"/>
+            <column name="surname" type="varchar(250)"/>
+            <column name="email" type="varchar(250)"/>
+            <column name="country" type="varchar(250)"/>
+            <column name="city" type="varchar(250)"/>
+            <column name="phone" type="varchar(250)"/>
+            <column name="login" type="varchar(250)">
+                <constraints unique="true" uniqueConstraintName="login_uq" nullable="false"/>
+            </column>
+            <column name="password" type="varchar(250)"/>
+            <column name="photo" type="text"/>
+            <column name="admin_flag" type="boolean" defaultValueBoolean="false"/>
+            <column name="enabled" type="boolean" defaultValueBoolean="true"/>
+            <column name="created_date" type="datetime"/>
+            <column name="created_by" type="varchar(250)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="last_modified_by" type="varchar(250)"/>
+        </createTable>
+        <addAutoIncrement tableName="users" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+    </changeSet>
+</databaseChangeLog>

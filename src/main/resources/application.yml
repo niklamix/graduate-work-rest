@@ -1,0 +1,42 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus, jolokia
+
+server:
+  compression:
+    enabled: true
+  shutdown: GRACEFUL
+
+spring:
+  main:
+    banner-mode: off
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+    deserialization:
+      fail-on-unknown-properties: false
+  lifecycle:
+    timeout-per-shutdown-phase: 1m
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    drop-first: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/graduate-work-db
+    username: postgres
+    password: admin
+  security:
+    user:
+      name: admin
+      password: $2a$10$QS6MSxsD8lpdBPYXgOd09eHqLjF52hcjro64FsKsdu1SKVo3N.a3i
+
+springdoc:
+  api-docs:
+    path: /api/docs
+  swagger-ui:
+    path: /swagger-ui/index.html
+
+logging:
+  level:
+    root: info

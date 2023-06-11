@@ -1,0 +1,13 @@
+spring:
+  main:
+    banner-mode: console
+  datasource:
+    url: jdbc:postgresql://localhost:5432/graduate-work-db
+    username: postgres
+    password: admin
+  liquibase:
+    drop-first: false
+  security:
+    user:
+      name: admin
+      password: $2a$10$QS6MSxsD8lpdBPYXgOd09eHqLjF52hcjro64FsKsdu1SKVo3N.a3i
